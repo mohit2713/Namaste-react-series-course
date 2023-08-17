@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 const heading = React.createElement(
   //  React.createElement() or Heading is an object //
   //  ReactElement is (object) => HTML that (Browser understand)  //
@@ -32,7 +35,6 @@ boot.render(headingthree);
 //            It can apply to a small portion of our page //
 //            It can work independently in a small portion of our app //
 //            It is giving some helper Methods that we need to use to develop Fast Applications //
-
 
 // Framework is a framework which comes with all loads of things. //
 // All frameworks require you to create whole app using that framework //
