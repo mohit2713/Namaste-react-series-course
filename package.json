@@ -10,5 +10,9 @@
   },
   "browerslist": [
     "last 2 versions"
-  ]
+  ],
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  }
 }

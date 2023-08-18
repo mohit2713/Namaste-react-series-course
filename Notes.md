@@ -90,3 +90,71 @@ Normal javascript does not have import and export.
 1. IT is such a powerfull tool.
 2. we can configure settings on which browsers and versions of browsers your app will perform 100% better.
 3. IT can also configure in which country our app perform better.
+
+
+## SCRIPTS (package.json)
+1. In Scripts we configure shotcut commands that are used in projects.
+2. Example:- "Scripts" :{ "start": "parcel index.html"} used to start development build.
+3. TO run it we do :- (npm run start ) => it will execute above command in scripts.
+4. npm start can execute only for this. start is keyword reserved by npm.
+4. Example:- "Scripts" :{ "build": "parcel build index.html"} used to start production build.
+5. TO run it we do :- (npm run build) => it will execute build command shwon above in scripts.
+
+
+# JSX
+1. jsx is a javascript syntax which is easier to create react element.
+2. jsx is not a part of react. they both different.
+3. because we can write react without jsx also.
+4. jsx makes the developer life easy.
+5. jsx is separate and react is separate.
+6. jsx is a convention where we kind of merge html and javascript together.
+7. # jsx is not html inside javascript. jsx is different than html.
+8. jxs is a html like syntax.
+9. jxs is not a valid pure javascript.
+10. Browser understand or javascript engine ES6 only.
+11. # JSX code is Transpiled before it reaches the  JS Engine. 
+12. # Transpiled means jsx code is coverted to the code ReactElement(js object) which browser can understand.
+13. # Transpiling is done by PARCEL!!! but but its not parcel actually it assign this to a package.
+## -------------------------------------------------------------------
+14. # This transpiling done by package named!!!!!! Babel!!!!!!!!!1.
+## -------------------------------------------------------------------
+15. Babel is transpiling our code so that react will understand it .
+16. Babel is a javascript compiler that js engine will understand.
+17. # jxs => Babel transpile it to React.createElement => ReactElement (js object) => HtmlElementt(render).
+18. Babel also Transpile es6 code to a code that older browser understand.
+19. Babel is a some piece of javascript code / javascript library/ npm package.
+20. Babel is another important package after parcel.
+21. # To give attributes in jsx we use camelcase .
+
+
+
+# This is a react element.
+1. Heading is react element (js object).
+
+2. const Heading = (
+   <div id="container">
+      <h1>Namaste React Functional component</h1>
+   </div>
+); 
+
+
+
+# React Components :- 1. Class Based Components (old way) 2. Functional Components (New way).
+  Everything in react is a component.
+1. Always write functional components , no need to write class based componenets.
+2. Class Based Components use javascript classes and Functional Components used javascript functions.
+3. # when you creating any component named it with a capital letter otherwise you will get error later.
+
+# Functional Components (New way)
+1.Functional Components is a normal javascript function which return some piece of jsx.
+2. which returns some jsx elements.
+3.Functional Components is a javascript function which returns a ReactElements.
+4. const Heading = () => (
+   <div id="container">
+      <h1>Namaste React Functional component</h1>
+   </div>
+); 
+5. render functional component :- abc.render( <Heading />).
+6.component composition :- composing two components in one another.
+7. # WE can inject any type of javascript code in jsx using --> {}.
+8. jsx also prevent cross-scripting attacks in your browser coz its like sanitize data before pass into it.
