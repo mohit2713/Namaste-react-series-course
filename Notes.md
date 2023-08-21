@@ -158,3 +158,29 @@ Normal javascript does not have import and export.
 6.component composition :- composing two components in one another.
 7. # WE can inject any type of javascript code in jsx using --> {}.
 8. jsx also prevent cross-scripting attacks in your browser coz its like sanitize data before pass into it.
+
+
+# Props (properties)
+1. Passing a prop to a component is just a passing argument to a function.
+2. React is wrapping these props and pass an object to the component.
+
+
+# config driven ui 
+1. means:- our website is driven by data/congif which comes from backend.
+2. Our webiste data comes from the backend.
+3. The config data will drive your ui.
+
+
+# restdata?.data  This is known as optional chaining.
+
+
+
+# You need to pass key in map() .
+1. Lets take an example that there are many restaurants cards in our app and they are redering from map() . suppose a new card is added in your restaurants and if you don't give keys to previous restaurants card then react cant't distinguish between the new card and the previous listed restaurants cards then react wwil re-render all the restaurants cards again and its not a good pratice and if you have 1000 cards then react will render all 1000 restaurants cards everytime when a new card is inserted in restaurants cards.
+2. # So its important is to have key in map().
+3. {restlist.map((restaurants)=> {<Restaurants key={} resdata={restaurants} />})}.
+# you should use always unique id in keys.
+4.{restlist.map((restaurants, index)=> {<Restaurants key={index} resdata={restaurants} />})}
+ # react itself says that its not recomended use index as key. (if order of data will be changed it will mess up)
+
+ 
