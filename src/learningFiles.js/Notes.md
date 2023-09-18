@@ -183,4 +183,181 @@ Normal javascript does not have import and export.
 4.{restlist.map((restaurants, index)=> {<Restaurants key={index} resdata={restaurants} />})}
  # react itself says that its not recomended use index as key. (if order of data will be changed it will mess up)
 
+
+
+ # what react will do , you can do same with html, css, javascript.
+ # React or any other library or frameowork makes code developer friendly and you have to less write code.
+
+
+ # It is good habit to name your constants in capital letters.
+
+
+
+ # when you Export something using " Named Export " then you have to import it in currly brasis {}.
+ example -: export const URL = {[...]}.
+            import {URL} from "src".
+
+# when you Export something using " Default Export " then you have to import it in normally.
+ example -: const URL = {[...]}.
+            export default URL.
+            import URL from "src".           
+
+
+
+# React Hooks
+ Hooks are a normal js utility function for a purpose that react given to us.
+ whenever you see a function starting with use than it is a hook.
+
+## useState() 
+1. useState() :- superpowerfull state variables in react.
+2. Declare inside the component not outisde.
+3. Don't create useState hook in if else condition, for loop or function.
+   Maintains the state of your components.
+  ## eg1. const [listOfRestaurants, setListOfRestaurants] = useState(RES_DATA);
+  ##  useState() returns an array. ##
+  ## eg2. const arr = useState(RES_DATA);
+       const listOfRestaurants = arr[0];
+       const setListOfRestaurants = arr[2];
+   Above examples are same. we just destruct in eg2.
+# whenever a state variable is update, react will re render the component. 
+
+##  useEffect(()=>{},[])  ##
+1. if no dependencies array passed => useEffect is called on every render.
+2. if dependencies array passed => useEffect is called on initial render(just once).
+3. if dependencies array is [btnName] and everytime btnName is updated then useEffect is called.
+
+ useEffect is called after every render of that component. jab bhi component render hoga useEffect call hoga.
+## This react hook useEffect will be called automatically after the component is rendered.
+
+
+
+
+
+##### To collect value from Filter function use a const variable to collect result value
+ Eg:-          const filter = listOfRestaurants.filter((res) => {
+              return res.info.avgRating > 4.4;
+            });
+##### Pass props should be listOfRestaurants={listOfRestaurants} like this.
+##### use a variable to destruction of it like data.listOfRestaurants.
+
+
+
+## React is super fast coz it is good at Dom Manipulation . IT refresh components very very fast. ##
+
+
+
+
+## In react16 a new algorithm is came out to update Dom is which is Recociliation Algorithm (react fiber):-
+1. react fiber is a new way of finding the div and update the dom.
+2. It has a Diff Algorithm.
+3. iff Algorithm is it will find out the difference between the old virtual dom and new virtual dom and update the original/actual Dom.
+4. virtual dom is a representation of Actuall Dom.
+5. virtual dom is a javascript object. 
+6. react keep all the track of UI or all the dom nodes.
+
+## Why React is fast ##
+Answer:- react is fast coz Dom Manipluation is Efficiently in react.
+         How Because it has an virtual dom. virtual dom is a js object.
+         React use a alogrithm react fiber and diff algorithm to do this all stuffs.
+         It finds out difference between old virtual dom and new virtual dom and whenever react gots difference it will update the actual dom.
+         IT maintains Data layer and UI layer in sync.
+
+# Monolithic
+1. All UI , BE , DB , auth are together.
+# Microservices Architecture
+1. seperation of concerns/ single resposibility priciple.
+2. BE, UI, DB, sms service, Auth . they all are connected to each other via urls/api calls and interact to each other.
+
+
+# Two approch to render data from backend to UI:-
+Approch1. Loads -> Api (5000ms) -> render
+Approch2. Loads -> render -> Api (5000ms) -> render :-
+ 1. second approch is a better UX .
+ 2. we use useEffect to fetch the data after render page and after getting data we will re render it.
  
+
+## Shimmer UI ##
+1. A grey skelton is loaded quickly in our web app page before our app fully rendered with data.
+2. It a new technique of better UX.
+
+## Conditional rendering : rendering something in condtion.
+
+
+
+###### useState variables vs javascript variables:-  ######
+1. they are special and powerfull variables.Using state variables will re render the whole component once again and update component with new values.
+2. Normal variables will not render whole component again so if any changes occured than we can't refresh our compoment with that new values.
+
+## Whenever state variables update, react triggers a reconciliation cycle (re-renders the component) ##
+
+
+
+## react-router-dom ## Give components: 1.createBrowserRouter  2.RouterProvider 3. OutLet 4. Link
+1. we will install npm i react-router-dom to install this package.
+2. we will use createBrowserRouter to give configration of our routing.
+3. Routing is way to create routes to different pages of our react app but pages is nothing but a normal components.
+4. eg how to configure routing:-
+    const appRouter = createBrowserRouter([
+      {
+         path: "/",
+         element: <AppLayout />
+      },
+      {
+         path: "/about",
+         element: <About />
+      },
+      {
+         path: "/contact",
+         element: <contact />
+      }
+
+    ]);
+
+5. createBrowserRouter takes an array of object.
+6. This RouterProvider provides us the Actual Routing configration to our app.
+7. react-router-dom gave us a hook called useRouteError.
+   eg. import { useRouteError } from "react-router-dom";
+   This will give us an error object which we can use to pass error information.
+# OutLet:-
+8. Children routes:-
+   1. we use Outlet component from "react-router-dom" to do this.
+   2. Outlet is getting filled with components that is passed as childrens into my parent.
+   3. we can have mutiple parents and childrrens and all will reder.
+   4. Outlet is replaced by the components.
+
+# Never use anker tag for routing in react coz it will reloads your page.
+# In react we can navigate to a new page without reloading our current page.
+
+
+# Link:-
+1. Link component work exactly same as anker tag.
+2. Link component will navigate our page to different routes and refresh our components without reloading whole page but anker tag will reloading my whole page.
+3. In different places.
+ ##  IN code:-
+   <li>  
+   <Link to="/contact">Contact us</Link>
+   </li>
+
+ ##  IN Developer tools :-
+   <li>  
+   <a href="/contact">Contact us</a>
+   </li>
+4. It takes (to) as a property to navigate our different routes.
+5. Link is a component which is given to us by react router dom.
+6. Behind the scenes link is using anker tag.(eg see link in inspect-elements).
+7. Link is a wrapper over anker tag.
+8. react router dom also will keep a track of a link and you don't have to refresh the page.
+9. html, js , browser did't understand link , only react router dom will understand this link and making anker tag for them.
+
+# 5. Thats why React application is known as Single page Application.
+# 6. Everything in React is a component. Thats why we call it .
+
+# There are two types of routing in web application :-
+1. Server side routing.
+ :- A Network call request is send by browser to server to give back a particular file eg. contact.html that user is requesting.It will reloads our website everytime when the browser makes a Network call.
+2. Client side routing.
+ :- Browser don't make any Network call coz our all app components is already reloaded in the initially phase. we use react routing dom for it.
+ It will just refresh the components when we navigate our web pages thats why we call react is fast and its a single page application.
+
+## Dynamic Routing ##
+1. 
