@@ -4,9 +4,13 @@ import RestaurantsCards from "./RestaurantsCard";
 const RestaurantsList = (dataOfRestaurants) => {
   const DataList = dataOfRestaurants.filterRestaurants;
   return DataList.map((items) => {
-    console.log(items.info.id);
+    // console.log(items.info.id);
     return (
-      <Link key={items.info.id} to={"/restaurants/" + items.info.id}>
+      <Link
+        className="res-link-card"
+        key={items.info.id}
+        to={"/restaurants/" + items.info.id}
+      >
         <RestaurantsCards resData={items} />
       </Link>
     );

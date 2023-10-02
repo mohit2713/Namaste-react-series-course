@@ -2,39 +2,43 @@ import { useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { useParams } from "react-router-dom";
 import "./restaurantMenu.css";
+import { RESAPI } from "./../utils/constants";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   console.log(resInfo);
 
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     fetchMenu();
   }, []);
 
   const fetchMenu = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=" +
-        id
-    );
+    const data = await fetch(RESAPI + id);
     const json = await data.json();
-    // const resMenuData =
-    //   json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-    console.log(json.data);
     setResInfo(json.data);
   };
 
   if (resInfo === null) return <ShimmerUI />;
 
-  //   const { name } = resInfo?.cards[3]?.card?.card?.itemCards[0]?.card?.info;
-  //   console.log(name);
   const { name, avgRating, cuisines, totalRatingsString } =
     resInfo.cards[0]?.card?.card?.info;
-  console.log(name);
+  // console.log(name);
+
+  // if (
+  //   resInfo.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
+  //     ?.categories
+  // ) {
+  //   const resMenu =
+  //     resInfo.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
+  //       ?.categories[0];
+  // }
+
   const resMenu =
-    resInfo.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    resInfo.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+  console.log(resMenu);
 
   return (
     <div className="restaurant-menu-con">
@@ -51,16 +55,38 @@ const RestaurantMenu = () => {
         </div>
       </div>
       <div>
-        {/* <h2 className="res-list">{resMenu.itemCards[0].card.info.name}</h2> */}
+        <h4>
+          {/* {() => {
+            if (resMenu.categories) {
+              {
+                resMenu.categories[0].itemCards.map((item) => {
+                  return (
+                    <div>
+                      <ul>
+                        <li>{item.card.info.name}</li>
+                      </ul>
+                    </div>
+                  );
+                });
+              }
+            } else {
+              {
+                resMenu.itemCards.map((item) => {
+                  return (
+                    <div>
+                      <ul>
+                        <li>{item.card.info.name}</li>
+                      </ul>
+                    </div>
+                  );
+                });
+              }
+            }
+          }} */}
+        </h4>
         <h4>
           {resMenu.itemCards.map((item) => {
-            return (
-              <div>
-                <ul>
-                  <li>{item.card.info.name}</li>
-                </ul>
-              </div>
-            );
+            return <li key={item.card.info.id}>{item.card.info.name}</li>;
           })}
         </h4>
       </div>

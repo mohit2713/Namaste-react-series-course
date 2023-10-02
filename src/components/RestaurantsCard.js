@@ -11,12 +11,13 @@ const RestaurantsCards = (props) => {
         alt="res-logo"
         className="res-logo"
       />
-      <h3>{resData.info.name}</h3>
-
-      <h4>{avgRating}</h4>
-      <h4>{cuisines}</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{deliveryTime}</h4>
+      <div className="res-data">
+        <h3>{resData.info.name}</h3>
+        <h4>{avgRating}</h4>
+        <h4 className="res-cuisines">{cuisines}</h4>
+        <h4>{costForTwo}</h4>
+        <h4>{deliveryTime}</h4>
+      </div>
     </div>
   );
 };

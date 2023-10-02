@@ -325,6 +325,13 @@ Approch2. Loads -> render -> Api (5000ms) -> render :-
    3. we can have mutiple parents and childrrens and all will reder.
    4. Outlet is replaced by the components.
 
+# useRouterError() hook :-
+1. we use useRouterError hook to read error messages.
+2. we make our own error page.
+3. eg. import { useRouteError } from "react-router-dom";
+4. Give error object.
+
+
 # Never use anker tag for routing in react coz it will reloads your page.
 # In react we can navigate to a new page without reloading our current page.
 
@@ -360,4 +367,178 @@ Approch2. Loads -> render -> Api (5000ms) -> render :-
  It will just refresh the components when we navigate our web pages thats why we call react is fast and its a single page application.
 
 ## Dynamic Routing ##
-1. 
+# we gave path to restaurant menu page eg. path: "/restaurants/:id"
+1.we give id of different restaurants in path.
+2. we use <Link> while maping our restaurant menu list.
+3. we use useParam hook which return us ID. 
+eg.import { useParams } from "react-router-dom";
+4. We passed id's of restaurant in api url so that we got data of that particular restaurant. 
+
+# Function base component and class bases componnets:-
+   1. Function based componnets are just normal functions in js.
+   2. class based componnets are just class in in js.
+
+   3. how to write class based components:-
+ eg. 
+   import react from "react;
+   class UserClass extends React.component{
+      render(){
+         return(
+            <div>
+            <h2>Mohit</h2>
+            <h3>Chandigarh</h3>
+            </div>
+         );
+      }
+    }
+    export default UserClass;
+
+   * class-based component that will inherit a User class component from its parent React.Component.
+   * the React.component is a class which given to us by react. so we will import this from react package;
+   * User class is inheriting properties from it.
+
+   4. how to write function based components:-
+ eg. const User = () => {
+         return(
+            <div>
+            <h2>Mohit</h2>
+            <h3>Chandigarh</h3>
+            </div>
+         );
+    }
+    export default User;
+
+   5. we use render() in class based component and return jsx; 
+   6. props in Functional component and Class based component:-
+    eg. 
+     
+   const app = () => {
+      return(
+
+         <User name={ "Mohit(function)" } />
+         <UserClass name={ "Mohit(class)" } />
+      );
+   }  
+    export default App;
+    
+   import react from "react;
+
+    const User = ({name}) => {
+         return(
+            <div>
+            <h2>Mohit</h2>
+            <h3>Chandigarh</h3>
+            </div>
+         );
+    }
+    export default User;
+     
+    const User = () => {
+      constructor(props){
+         super(props);
+         console.log(this.props);
+      }
+         return(
+            <div>
+            <h2>Name:{this.props.name}</h2>
+            <h3>Chandigarh</h3>
+            </div>
+         );
+    }
+    export default User;
+
+    * we use constructor to pass props in class based component.
+    * we also definitly use super(props).
+    * we use super(props) to use this.props in constructor.
+    * This is because the child class constructor i.e. the User Class here, will not recognize this keyword until super() function has been called.
+    * Using this keyboard we can access props anywhere in our class.
+
+# Mounting or Invoking a function :- Loading that function component on web page.
+* create state variables:-
+      eg const [count] = useState(0);
+         const [count2] = useState(1);
+  use: {count}    
+* behind the scenes react containing all the states in one big object same a class based components.
+
+# Instance of class based component:- Loading a class based component on our web page means that i am creating a new instance of a class.
+ * when a create a new instance of a class then constructor function is called and this is the best place to receive props and best place to create state variables.
+* create state variables:- 
+      eg this.state = {
+       count: 0,
+       count2: 1,
+      };
+  use: {this.state.count}
+  * this.state is a big object which contains all the state variables that we will creates.
+  # NEVER UPDATES STATE VARIABLES DIRECTLY #
+ * Update state variables:-
+ . we can update state variables in class based component using:-
+   this.setState({}) and it takes an object in it to update state variable.
+   eg. this.setState({count: this.state.count + 1});
+
+# First thing when a class loads the constructor() is called immedeatly and then render() is called.
+
+# ComponentDidMount() when our class component is compeletly mounted on the page then ComponentDidMount() is called.
+* It is used to make api calls.
+why coz:-
+* First my component will render quickly then api is callled then it filled with data.
+
+# lifecycle of class based components:-
+1. constructor() is called.
+2. render() is called.
+3. ComponentDidMount() is called.
+
+
+###### React life cycle diagram:- ######
+
+# 1. Mounting 2. Updating 3.Unmounting 
+# site:- https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+# 1. Mounting
+* There are two phases: 1. Render phase 2. Commit phase
+* render phase: react render parents contructor() and render() and their childrens constructor() and render() quickly.
+* commit phase: dom is updated as our state updates with api data using componentDidMount.
+# componentDidMount() :- used to make api call and re-render component.
+* when we have two childrens in a parent class based component then first parent contructor() will call then parent render will call then the render phase of first child is called (constructor() and render()) then render phase of second child is called (constructor() and render()) then commit phase of first child and then second child commit phase is called (componentDidMount()).
+* we will make async() to componentDidMount().
+ eg. async componentDidMount() {}.
+ * we will call api in this.
+ eg.async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/mohit2713");
+    const json = await data.json();
+    this.setState({
+      userInfo: json,
+    });
+    console.log(json);
+  }
+# React will optimize this and React will batch the render phases of multiple childs and then the commit phase of mutiple childs starts (componentDidMount()) and react updates the dom.
+* Dom manipulation is most expensive thing when we updating our component.
+* React will batching all childs render phases (virtual dom) then batching all childs commit phase and updating the dom.
+* First it will run all render phase then all commit phase.
+# This will optimize performance of react app ,That's why react is fast. 
+
+# 2. updating :- componentDidUpdate()
+* when our state updates in componentDidMount() then it will re-render the component with new api data values filled in it.
+* and then componentDidUpdate() is called.
+* and keeping updating when state updates.
+
+# 3. Unmounting :- componentWillUnmount()
+* when component will disappear.
+* when we changed our existing component to a new component then the componentWillUnmount() will called.
+* why we need this suppose there is setInterval(()=>{log("Hi")},1000) in componentdidMount() then every time we loads this page or go to a new page then this setInterval is continously going on like onnce, twice, thrice and so on. so we need to clean up things thats why we use componentWillUnmount.
+* we use clearInterval() in componentWillUnmount() to avoid this inconsistency of code.
+* we use this keyword to give reference.
+eg. this.timer =  setInterval(()=>{log("Hi")},1000)
+eg. clearInterval(this.timer)
+
+
+##### In a useEffect() we do a return()=>{} in it that will run after i leave my page. #####
+eg.  useEffect(()=>{
+   console.log("UseEffect");
+  const timer = setInterval(()=>{log("Hi")},1000)
+   return () => {
+      console.log("Run when we leave this page");
+      clearInterval(timer);
+   }
+},[])
+
+
