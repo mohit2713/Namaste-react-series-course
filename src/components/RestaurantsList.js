@@ -7,7 +7,7 @@ const RestaurantsList = (dataOfRestaurants) => {
     // console.log(items.info.id);
     return (
       <Link
-        className="res-link-card"
+        className="p-2 m-8 border border-gray-200 bg-gray-100 rounded-md"
         key={items.info.id}
         to={"/restaurants/" + items.info.id}
       >
