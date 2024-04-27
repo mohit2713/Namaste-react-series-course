@@ -3,8 +3,8 @@ import { RESAPI } from "./../utils/constants";
 
 const useRestaurantMenu = (id) => {
   const [resInfo, setResInfo] = useState(null);
-  // console.log(resInfo);
-  // console.log(id);
+  //  console.log(resInfo);
+  //  console.log(id);
 
   useEffect(() => {
     fetchMenu();
