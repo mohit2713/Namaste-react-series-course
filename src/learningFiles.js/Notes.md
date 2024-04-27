@@ -600,40 +600,487 @@ Tailwind CSS makes it quicker to write and maintain the code of your application
 
 # Tailwind PostCSS :- a tool for transforming CSS with javascript. Tailwind css uses PostCss behind the scenes.
 
-
 # Install tailwind css:-
-* npm install -D tailwindcss postcss
+
+- npm install -D tailwindcss postcss
   npx tailwindcss init
 
-* Configure PostCSS 
+- Configure PostCSS
   Create a .postcssrc file in your project root, and enable the tailwindcss plugin.
-* {
-   "plugins": {
-     "tailwindcss": {}
-   }
- }
+- {
+  "plugins": {
+  "tailwindcss": {}
+  }
+  }
 
-* Configure your template paths
-Add the paths to all of your template files in your tailwind.config.js file.
+- Configure your template paths
+  Add the paths to all of your template files in your tailwind.config.js file.
 
   content: [
-    "./src/**/*.{html,js,ts,jsx,tsx}",
+  "./src/**/*.{html,js,ts,jsx,tsx}",
   ],
 
-* Telling in which file we need to use tailwind.
-* In this project we use html,js only.
- eg :-   content: [
-    "./src/**/*.{html,js}",
+- Telling in which file we need to use tailwind.
+- In this project we use html,js only.
+  eg :- content: [
+  "./src/**/*.{html,js}",
   ],
-
 
 ## Parcel need to use .postcssrc to read the taiwind.
+
 ## Your bundler use postcssrc to understand the tailwind.
+
 ## From postcssrc our project understand what written in tailwind.
 
 # Tailwind :-
+
 1. Tailwind css gives you classnames automatically for every css you want to write in your app.
 2. we can Tailwind css intelligence extension for more help using tailwind.
 3. tailwind css is very light weight coz suppose in our code when parcel will make the bundle of css it will only include the css that is required on our web page. suppose if we m-4 (margin)class is written many times in our code then tailwind import only one m-4 class for all of them.
 4. its tiny - never ship unused CSS again :- when you add some css classs in your app then only its add to css file only.
 5. using tailwind all the developers comes in a sink writting the css. there no unused css or duplicate css clases in our app coz all developers using similar kind of classes.
+
+# High order component is a function that takes a component and returns a component.
+
+1. This high order component are pure functions.
+2. Higher order component used to enhance the component.
+
+# Major use of higher order component is when we have to enchance a component.
+
+##### imp :- React app built using : Data layer and UI layer.
+
+#### Keep your data layer strong so your ui will automatically strong.
+
+# All react have two layers :-
+
+1. UI layer :- jsx.
+2. Data layer :- state, props, local variable, {}.
+
+- Ui layer is impowered by data layer.
+
+# Accordion :- represents information in a limited amount of space.
+
+1. Accordian has a Header and body.
+2. Example in restaurantCategories.js component.
+
+# how to create a drop down feature :-
+
+1. Using state variables.
+
+# React Developer tool:-
+
+1. React developer is best debuging tool .
+2. You can see full react component tree.
+3. You can see components loading time.
+4. You can see behaviour of components.
+
+# Controlled and Uncontrolled Controlled :-
+
+- Controlled Controlled:-
+
+1. If a component is controlled by its parents its known as control component. Means child component state is controlled by parent component.
+
+- Uncontrolled Controlled:-
+
+2. If a component is controlled by itself or it managing its own state by itself then its known a uncontrolled component.
+
+# Most Advanced and Important Topic ******\*\*\******* :-
+
+# LIFTING STATE UP :-(Accordion example in react docs)
+
+1. Sometimes we need to Lift the state up to control the child components.
+
+# Props Drilling :
+
+# React context : Holds some data and give excess of that data to everywhere in our app.
+
+1. Helps to avoid props drilling.
+2. TWO ways to recieve data : 1. useContext 2. <UserContext.Consumer>{(data) => {data}}<UserContext.Consumer/>.
+3. useContext({}):- holds some piece of information that it will hold.
+4. useContext is a hook which comes from react.
+5. <userContext.Consumer> is used to consume value in classbase components. <userContext.Consumer> takes a call back function and extract value.
+   eg.<userContext.Consumer>
+   {
+   ({loggedInUser}) => (
+   <h1>{loggedInUser}</h2>
+   )
+   }
+   </userContext.Consumer>
+6. To modify or update or override default value we use :
+   <userContext.Provider value={{ loggedInUser: userName }} >
+   </userContext.Provider>
+
+7. <userContext.Provider value={{ loggedInUser: userName }} > is used to wrapped the root div or used for a specific portion in our app.
+
+# imp :- IN CLASS BASED COMPONENTS WE DO NOT HAVE ANY HOOKS.
+
+# React context vs Redux Toolkit :-
+
+1. interview question : Difference between react context and redux store.
+   answer :- So redux is a state management library and its a external library and its not inside react. we have to do npm redux to use it.
+
+# Redux : Data Managment library or State Managment library.
+
+1. Redux is not Mandatory.
+2. React and Redux are seperate library.
+3. Redux is not only state management library.
+4. Zustand is another state management libraray.
+5.
+
+## Redux store is a Big object and it is kept in a Central Global Space.
+
+## Redux slice means dividing our redux store to diferrent categories of data.
+
+eg. CartSlice
+
+1. Redux says when have to modify a cart than you can't update it directly.
+2. Way to update a card is :-
+
+# CLICK ON ADDBUTTON => DISPATCH an ACTION => FUNCTION :- REDUCER() => UPDATE OUR REDUX STORE SLICE.
+
+3. Reduc call dispatch(action) and dispatch an action will call a function() and this function() will internally modify the slice of our redux store.
+4. This function() is known as Reducer function.
+5. This above is used to writing the data.
+6. To Reading data from Our Redux store slice to our React component we need to use SELECTOR.
+7. # SELECTOR :- Reading the data from redux to react component.
+8. # SELECTOR refers to the Subscribing to the Store means our react component is Linked to the redux store and if data in redux store will changes than our react components data will also updates and have a sync to redux store.This subscribe is using SELECTOR.
+9. Example:- Our CART is subscribed to the Redux Store using a SELECTOR and whenever our slice of cart store is updated in redux store then our CART DATA will get updated.
+
+## Redux Toolkit
+
+1. Install two libraries :- @reduxjs/toolkit and react-redux.
+2. Build our store
+3. Connect our store to our app
+4. Slice (cartSlice)
+5. Dispatch(action)
+6. Selector (Selector is a hook inside the react).
+
+# How Redux Work:-
+
+## CREATED OUR STORE:-
+
+1. We create our store using :- configureStore();
+1. import {configureStore} from "@reduxjs/toolkit";
+
+# eg. const appstore = configureStore({});
+
+2. This will create our store.
+3. We will add slices to our store in configureStore({}).
+
+## PROVIDE STORE TO OUR APPLICATION :-
+
+4.  We use 'provider' to provide redux store to our app.
+5.  'Provider' will provide bridge between our react app and redux store.
+6.  import {Provider} from "react-redux";
+7.  We pass this provider to root of our app
+    eg. <Provider store={appstore}>
+
+        </Provider>
+
+8.  Provider takes store={} as a prop.
+9.  we pass store={appstore} and our store is provided to our app.
+10. Where you need to use this store, you will wrapped it with this provider.
+
+## Create Slice of our Store:-
+
+1. We create a new js file.
+2. we import create slice() to create a slice.
+3. eg.
+   import {createSlice} from "@reduxjs/toolkit";
+
+   const cartSlice = createSlice({
+   name: 'cart',
+   initialState:{
+   items:[]
+   },
+   reducers:{
+   // write actions nd reducer functions in this
+   addItem: (state,action) => {
+   // imp we are mutating our state/ directly changing
+   state.items.push(action.payload);
+   },
+   removeItem: (state) => {
+   state.items.pop();
+   },
+   clearCart: (state)=>{
+   state.items.length = 0;
+   }
+   },
+   });
+
+4. _reducers:{} :- addItem is a action and we attached a reducer function to it. When we dispatch an action, it will call the reducer function and reducer function will update our store and our store is subscribed to our cart so it will also get updates._
+5. reducer function will modify our cart and basically modify the slice of our store.
+6. addItem: (state,action) => {
+   state.items.push(action.payload);
+   }
+   This is our reducer function and has two parameters(state,action).It will modify state based on action.
+7. we will export reducers and actions.
+   eg. export const {addItem, removeItem, clearCart} = cartSlice.actions;
+   export default cartSlice.reducer;
+8. ## when we will do createSlice() then it will return an object in the --- const cartSlice ---This cartSlice object have actions and reducers in it.
+
+   eg. {
+   actions:{
+   addItems:
+   }.
+   reducers:{
+
+   }
+   }
+
+# 9. cartSlice is a big object having actions & reducers in it.
+
+10. So we exporting actions and reducers from it.
+
+# 11. We will add this (cartSlice) to our redux store.
+
+eg. const appStore = configureStore({
+reducer:{
+cart: cartReducer,
+users: userReducer,
+theme: themeReducer,
+}
+});
+This reducer is a big reducer of our redux store. This reducer contains small reducers of each slice (eg cartReducer). We exported this cartReducer from our CartSlice component.
+
+# 12. Now we need to make a synk between Cart Component and slice of redux store(cartSlice component).
+
+# 13. So we use a Selector to subscribe cart component to the store to our cartSlice.
+
+# 14. _Selector is nothing but a Hook Inside React. It comes from react-redux library._
+
+# 15. import {useSelector} from "react-redux";
+
+# 16. This use selector hook gives us access to our Redux store.
+
+17. We need to tell what portion of our store we need to access to.
+
+# 18. _const cartItems = useSelector((store) => store.cart.items);_
+
+      eg. subscribing a part of our store which is store.cart
+          We not subscribing store.users
+          We not subscribing store.theme
+
+19. useSelector helps to identify wha.t portion of our store we need to read.
+    This cartItems is in synk to our store and if our store updates then this cartItems will also update.
+
+20.**Now the cartItems (above const = cartItems) will get the data of items(which is a array) in our cartSlice**
+
+# So whenever my store is getting modify , it will changing data inside our cartItems and displaying it to the user.
+
+# 21. Now we need to click on the resturant menu items (button) and add item to the cart, for that we need to dispatch an action.
+
+22. We need to write a onClick function to our button.
+
+For dispatch an action we need a _Dispatch hook_.
+
+# import {useDispatch} from "react-redux";
+
+      const dispatch = useDispatch();
+
+# // This dispatch is a function. We will import our actions from our cartSlice component which we exported earlier eg.addItems,removeItems,clearCart and use in this dispatch function.
+
+    eg. const handleAddItem = () => {
+    // Dispatch an action
+    dispatch(addItems("Pizza"));
+
+}
+
+# addItems("Pizza") is a action.
+
+_when we dispatch an action then it will call a reducer function and it will update slice of our store and our store is subscribed to the cart using selector so this update our cart Items_
+
+# This addItems("Pizaa") is our action.payload
+
+eg. addItem: (state, action) => {
+// Mutating the state here
+state.items.push(action.payload);
+},
+
+# This "pizza" will go in our items[] by state.items.push(action.payload).
+
+# So whatever i pass in my _dispacth(addItems("pass data here"));_ then it will go to my cartSlice reducer function action which is(addItem:(state,action)) and this will go inside our action.payload.
+
+# when we do dispatch(addItems("add data here")) then It will create an object and It will create a payload and add data in payload what data we added to it and This object (with payload inside it) will passed to the second paramenter of our reducer function action eg. add: (state,action). Means This dispatch object passed to this action(payload inside it) and goes in code of :- state.items.push(action.payload);
+
+eg how object looks:-
+{
+payload:"Pizza"
+}
+
+25. For selecting we have useSelect and For dispatching we have useDispatch.
+
+_IF you don't subscribe right portion of the store then it will be a huge loss_
+
+eg. const cartItems = useSelector((store)=>store);
+const cartItems = store.cart.items;
+_This above code will make app performance slow as change in any slice of the store will leads to update this component which is a waste_
+
+# So we should always select a needed slice of our store not the whole store.
+
+## Immer is a tiny package allows you to work with immutable state in a more convenient way.
+
+## Redux toolkit uses immer behind the scenes.
+
+_redux tookit says :- either mutate the exsisting state or return a new state._
+eg. clearCart: (state,action)=>{
+state.itms.length = 0;
+// or
+return {items:[]};
+},
+
+## REDUX DEV TOOLS:- used to debug Redux states.
+
+## Old react script to change port 1234 // "start": "parcel index.html",
+
+## Types of Testing(Developer):-
+
+1. Unit Testing :- Testing one unit or one component in isolation.
+2. Integration Testing :- Testing in which multiple components are talking and envolving to each other.
+3. End to End testing- e2e testing :- User lands on our app and we will text till user tasks were completed.
+
+## REACT TESTING LIBRARY :-
+
+1. react testing library based on top of `Dom Testing Library`.
+2. If we do => create-react-app then this react testing library already comes with it.
+3. In this project case we will externally get this library as we wrote our application with scrach.
+4. React Testing Library uses something known as `JEST`.
+5. Jest is a javascript Testing Framework and `Dom Testing Library` => `REACT TESTING LIBRARY` uses `JEST` behind the scenes.
+6. We will use react testing library and jest in our case.
+
+# 7. npm i -D npm install @testing-library/react
+
+# 8. npm i -D jest
+
+9. we are using jest with babel so we need to install other dependencies.
+
+# 10. npm install --save-dev babel-jest @babel/core @babel/preset-env
+
+# 11. we create a file name => babel.config.js in root of our project directory and paste this code in it =>
+
+`module.exports = {
+presets: [['@babel/preset-env', {targets: {node: 'current'}}]],
+};
+
+12. parcel uses babel behind the scenes and parcel has its own configration for babel and now we tring to add extra configration in babel.config.js and Now parcel will conflict with this babel.
+
+# 13. So we will configure parcel config file to disable default babel transpilation.
+
+# 14. See file in root directory => .parcelrc
+
+15.Last we will do jest configration.
+
+# 16. npx jest --init
+
+\*\* If you're using Jest 28 or later, jest-environment-jsdom package now must be installed separately.(react test library website => setup=> jest28 => note)
+
+17. We will install jsdom library.
+
+# 18. npm install --save-dev jest-environment-jsdom
+
+19. jsdom:- library which parses and interact with assembled HTML,just like a broweser. To config zest file we will use jsdom not node to run test cases.
+20. jsdom provides a environment to run test cases.
+
+## Setup for Start writting test cases:-
+
+1. We will create a folder names => **tests**
+   This \_\_ means dunder. Dunder test means two underscore.
+2. Files in this folder will consider your our test files (js or ts files).
+3. If you don't want to create this folder than create your test file using extension => .test.js/ts or .spec.js/ts
+
+## we should always have `expect()` (Assertion) in our test funtion.
+
+## *Unit Testing case for single component:* -
+
+1. Render component in `render()` import from "@testing-library/react" inside.
+   eg. render(<Contact/>)
+2. Also import `screen` from "@testing-library/react".
+3. eg. const heading = screen.getByRole("heading");
+   expect(heading).toBeInTheDocument();
+   `screen` is an object comes from react testing library. We get acceess of elements that rendered using screen.
+   toBeInTheDocument() will find whether my heading is inside the document or not.
+
+4. How to enable JSX work in test cases ?
+
+   # Add library => @babe//preset-react
+
+   eg. npm i -D @babel/preset-react
+
+5. # Include @babe//preset-react in babel config.
+
+   eg.
+   module.exports = {
+   presets: [
+   ["@babel/preset-env", { targets: { node: "current" } }],
+   ["@babel/preset-react", { runtime: "automatic" }],
+   ],
+   };
+
+6. To run tobeInTheDocument() we need to install another library
+   # @testing-library/jest-dom
+   eg npm i -D @testing-library/jest-dom
+
+7. const heading = screen.getByRole("heading");
+## console.log(heading); => will return a react element => object.
+
+
+## Example of a test case to check if something is rendered properly or not.
+test("Should load button in the component", () => {
+  render(<About />);
+
+  // Querying
+  const button = screen.getByText("Submit");
+  console.log(button);
+
+  // Assertion
+  expect(button).toBeInTheDocument();
+});
+
+
+
+8. # Grouping of test cases using  =>  describe();
+
+describe("Contact page test cases", ()=> {
+   test("",() => {});
+   test("",() => {});
+   test("",() => {});
+   test("",() => {});
+   it("",() => {});
+   it("",() => {});
+});
+
+9. we can also use `it` instead of `test`;
+
+## Our test cases running on a js dom. It is not a browser. It is a browser like environment.
+
+## We cannot make a network call in our test casses.
+
+# "watch-test": "jest --watch" => run test cases automatically everytime.
+eg. npm run watch-test
+
+### whenever you are using a state updates so wrap your `render()` in a `act()`. This `act()` comes from "react-dom/test-utils".
+1. we have to await this act( ) and it returns a promise.
+   eg. 
+
+
+
+## *Integraton Testing case for All components working together* :-
+
+1. Fake api call and fetch data or fake fetch request in test cases.
+
+eg. global.fetch = jest.fn(() => {
+  return Promise.resolve({
+    json: () => {
+      return Promise.resolve(MOCK_DATA);
+    },
+  });
+});
+
+# jest.fn() => gives a mock function => takes a call back function.
+
+2. See example search.test.js
+
+3. See example topRatedRes.test.js
+
+4. Best Example See cart.test.js file.
+
